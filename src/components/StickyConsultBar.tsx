@@ -33,7 +33,7 @@ export function StickyConsultBar() {
         visible ? "translate-y-0" : "translate-y-full",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-[76rem] items-center justify-between gap-6 px-8">
+      <div className="mx-auto flex h-16 max-w-[76rem] items-center justify-between gap-6 pl-8 pr-28 min-[1500px]:pr-8">
         <p className="text-[0.95rem] text-white">
           <span className="font-semibold">Free consultation.</span> No upfront fees, and no fee unless we recover for
           you.

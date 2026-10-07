@@ -22,8 +22,7 @@ export default function PrivacyPolicyPage() {
       <h3>Information you give us</h3>
       <p>
         When you submit the contact form, call, email or message us, we collect the information you choose to
-        provide. On the contact form this includes your name, email address, phone number, the type of case and your
-        message.
+        provide. On the contact form and in the live chat this includes your name, contact details and your message.
       </p>
       <h3>Information collected automatically</h3>
       <p>
@@ -50,8 +49,10 @@ export default function PrivacyPolicyPage() {
           the map loads, Google may collect information under its own privacy policy.
         </li>
         <li>
-          <strong>Google reCAPTCHA.</strong> The contact form may use reCAPTCHA to protect against spam. Its use is
-          subject to the Google Privacy Policy and Terms of Service.
+          <strong>Contact form and live chat.</strong> The form on our contact page and the chat window are provided
+          by a third-party client intake platform. What you enter, along with technical data such as your IP address,
+          is processed by that provider so we can respond. The provider may use cookies or similar storage to keep
+          the form and chat working.
         </li>
         <li>
           <strong>WhatsApp, Facebook and Instagram.</strong> If you follow a link to one of these services, that
@@ -80,8 +81,8 @@ export default function PrivacyPolicyPage() {
 
       <h2>Contact form submissions and confidentiality</h2>
       <p>
-        Submitting the contact form does not create an attorney-client relationship, and messages sent through the
-        form are delivered by email. Please do not include confidential or sensitive details until we have agreed to
+        Submitting the contact form or using the chat does not create an attorney-client relationship, and messages sent through the
+        form or the chat are transmitted through a third-party provider. Please do not include confidential or sensitive details until we have agreed to
         represent you. See our <Link href="/disclaimer">Disclaimer</Link> for more information.
       </p>
 

@@ -30,8 +30,8 @@ export default function DisclaimerPage() {
 
       <h2>No attorney-client relationship</h2>
       <p>
-        Viewing this website, calling our office, sending an email, sending a message through WhatsApp or submitting
-        the contact form does not create an attorney-client relationship between you and {site.name}. An
+        Viewing this website, calling our office, sending an email, sending a message through WhatsApp, using the chat window
+        or submitting the contact form does not create an attorney-client relationship between you and {site.name}. An
         attorney-client relationship is formed only when both you and the firm agree to it in a signed, written
         agreement.
       </p>

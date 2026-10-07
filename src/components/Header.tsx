@@ -97,7 +97,7 @@ function HeaderInner({ pathname }: { pathname: string }) {
         </nav>
 
         <div className="flex items-center gap-2">
-          {/* Phones get the floating Call Now button instead, so the pill starts at the sm breakpoint. */}
+          {/* No room beside the logo on phones, so the pill starts at the sm breakpoint. */}
           <div className="hidden sm:block">
             <a href={`tel:${site.phone.tel}`} className={buttonClass("primary", "md", "min-h-11 px-5 text-[0.95rem]")}>
               <Phone aria-hidden="true" className="size-4" strokeWidth={2.4} />

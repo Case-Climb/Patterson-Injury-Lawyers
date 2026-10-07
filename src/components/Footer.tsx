@@ -143,17 +143,3 @@ export function Footer() {
     </footer>
   );
 }
-
-/** Floating click-to-call button, phones only, on every page. */
-export function MobileCallButton() {
-  return (
-    <a
-      href={`tel:${site.phone.tel}`}
-      className="fixed bottom-4 right-4 z-40 inline-flex min-h-14 items-center gap-2.5 rounded-full bg-accent px-6 text-base font-semibold text-navy-ink shadow-[0_14px_34px_-10px_rgb(21_22_59/0.7)] ring-2 ring-white/70 [--focus-ring:var(--color-navy)] active:translate-y-px md:hidden"
-    >
-      <Phone aria-hidden="true" className="size-5" strokeWidth={2.4} />
-      Call Now
-      <span className="sr-only">: {site.phone.display}</span>
-    </a>
-  );
-}

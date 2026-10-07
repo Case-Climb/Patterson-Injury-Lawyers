@@ -61,7 +61,7 @@ export function CookieConsent() {
   return (
     <section
       aria-label="Cookie consent"
-      className="fixed inset-x-3 bottom-20 z-[60] rounded-3xl border border-line bg-white p-5 shadow-[0_24px_60px_-18px_rgb(21_22_59/0.55)] sm:inset-x-auto sm:bottom-6 sm:right-6 sm:max-w-md sm:p-6"
+      className="fixed inset-x-3 bottom-20 z-[60] rounded-3xl border border-line bg-white p-5 shadow-[0_24px_60px_-18px_rgb(21_22_59/0.55)] sm:inset-x-auto sm:bottom-24 sm:right-6 sm:max-w-md sm:p-6"
     >
       <h2 className="font-sans text-base font-semibold tracking-normal text-ink">Cookies on this site</h2>
       <p className="mt-2 text-[0.925rem] leading-relaxed">

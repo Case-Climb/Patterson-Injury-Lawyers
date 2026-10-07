@@ -32,7 +32,7 @@ export default function TermsPage() {
       <h2>Using the site</h2>
       <p>You agree to use this website only for lawful purposes. You agree not to:</p>
       <ul>
-        <li>Submit false, misleading or unlawful information through the contact form</li>
+        <li>Submit false, misleading or unlawful information through the contact form or chat</li>
         <li>Attempt to interfere with the site's operation or security</li>
         <li>Use automated tools to send spam or to copy the site's content in bulk</li>
       </ul>

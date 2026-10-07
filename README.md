@@ -15,7 +15,7 @@ npm run audit:seo    # on-page SEO check against a running server (defaults to l
 
 | What | File |
 | --- | --- |
-| **All client data**: phones, address, hours, social, GA4 ID, reCAPTCHA key, photo paths | `src/config/site.ts` |
+| **All client data**: phones, address, hours, social, GA4 ID, chat widget and intake form IDs, photo paths | `src/config/site.ts` |
 | Brand colours and fonts | `src/app/globals.css` (`@theme` block) |
 | Practice area copy (8 pages) | `src/content/practice/*.tsx` |
 | Montgomery and Delaware County copy | `src/content/locations.tsx` |
@@ -25,11 +25,12 @@ npm run audit:seo    # on-page SEO check against a running server (defaults to l
 | Titles, descriptions, canonical, OG/Twitter | `src/lib/seo.ts` (`pageMetadata`) |
 | Schema markup | `src/lib/schema.ts` |
 | Redirects and security headers | `next.config.ts` |
-| Contact form delivery | `src/app/api/contact/route.ts` |
+| Contact form (embedded intake form) | `src/components/FormEmbed.tsx`, IDs in `site.ts` |
+| Live chat widget | loaded in `src/app/layout.tsx`, ID in `site.ts` |
 
 Shared components are in `src/components`: `Hero` (home and inner-page heroes, breadcrumbs),
 `blocks` (CTA band, FAQ section, process timeline, card grid, photo slots, map),
-`FaqAccordion`, `Header`, `Footer`, `ContactForm`, `CookieConsent`, `StickyConsultBar`,
+`FaqAccordion`, `Header`, `Footer`, `FormEmbed`, `CookieConsent`, `StickyConsultBar`,
 `PracticeTemplate` and `CountyTemplate`.
 
 ## Placeholders to replace before launch
@@ -38,11 +39,7 @@ Everything below is set in `src/config/site.ts` unless noted.
 
 1. **GA4 ID**: `ga4Id` is `G-XXXXXXXXXX`.
 2. **Google Maps**: confirm the pin for `mapsEmbedUrl` and the `geo` coordinates.
-3. **reCAPTCHA**: `recaptchaSiteKey` is `[RECAPTCHA_SITE_KEY]`. Add a reCAPTCHA v3 site key there and
-   `RECAPTCHA_SECRET_KEY` in the hosting environment.
-4. **Contact form delivery**: set `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` (see `.env.example`).
-   Without them the form tells the visitor to call instead of silently dropping the message.
-5. **Attorney review of legal copy**: practice pages, FAQ, blog posts and the three legal pages are
+3. **Attorney review of legal copy**: practice pages, FAQ, blog posts and the three legal pages are
    general information drafted for the firm and should be reviewed by the attorney before launch.
 
 ## Photos
@@ -89,17 +86,16 @@ The site is built for Vercel but runs on any Node host that supports Next.js.
 
 1. Put the project in a Git repository and push it to GitHub.
 2. In Vercel, import the repository. Framework preset: Next.js. No build settings need changing.
-3. Add the environment variables from `.env.example` (Project > Settings > Environment Variables).
-4. Deploy and check the preview URL.
-5. Project > Settings > Domains: add `www.pattersoninjury.com` and `pattersoninjury.com`.
+3. Deploy and check the preview URL.
+4. Project > Settings > Domains: add `www.pattersoninjury.com` and `pattersoninjury.com`.
    Set `www` as the primary domain and let the apex redirect to it. This matches the canonical URLs,
    sitemap and schema, which all use `https://www.pattersoninjury.com`.
-6. In GoDaddy DNS (the domain is currently on GoDaddy's website builder):
+5. In GoDaddy DNS (the domain is currently on GoDaddy's website builder):
    - `A` record, host `@`, value: the IP Vercel shows for the apex domain
    - `CNAME` record, host `www`, value: the target Vercel shows (for example `cname.vercel-dns.com`)
    - remove the old website-builder `A` record and any domain forwarding
    - leave the `MX` and other mail records untouched so `lawpatterson.com` / firm email keeps working
-7. Wait for DNS and the SSL certificate, then unpublish the old GoDaddy site.
+6. Wait for DNS and the SSL certificate, then unpublish the old GoDaddy site.
 
 After launch:
 

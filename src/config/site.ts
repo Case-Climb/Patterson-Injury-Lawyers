@@ -5,9 +5,7 @@
  * site reads from this file. Change a value here and it updates everywhere:
  * header, footer, contact page, schema markup, sitemap and metadata.
  *
- * Values wrapped in [SQUARE_BRACKETS] or made of X's are placeholders that
- * still need real content. `isPlaceholder()` at the bottom detects them so
- * the UI can degrade gracefully instead of shipping a broken link.
+ * Values made of X's (the GA4 ID) are placeholders that still need real content.
  */
 
 export const site = {
@@ -75,8 +73,26 @@ export const site = {
   /** PLACEHOLDER: GA4 measurement ID. */
   ga4Id: "G-XXXXXXXXXX",
 
-  /** PLACEHOLDER: reCAPTCHA v3 site key (the secret key goes in RECAPTCHA_SECRET_KEY). */
-  recaptchaSiteKey: "[RECAPTCHA_SITE_KEY]",
+  /**
+   * Free case review form on /contact, embedded from the firm's intake platform.
+   * Fields, spam protection and delivery are managed in that platform.
+   */
+  intakeForm: {
+    id: "EnRycYKThQ0cqLxkWUv6",
+    name: "Website Form (Patterson Injury Lawyers)",
+    baseUrl: "https://services.caseclimb.com",
+    height: 540,
+  },
+
+  /**
+   * Live chat widget (LeadConnector / HighLevel), loaded on every page from
+   * src/app/layout.tsx. Set `widgetId` to null to switch the chat off.
+   */
+  chatWidget: {
+    widgetId: "6ac681a40e60a54e321912cd" as string | null,
+    loaderUrl: "https://widgets.leadconnectorhq.com/loader.js",
+    resourcesUrl: "https://widgets.leadconnectorhq.com/chat-widget/loader.js",
+  },
 
   /**
    * Photos (paths are relative to /public).
@@ -127,9 +143,3 @@ export const site = {
 export const phoneText = site.phone.display.replace(/ /g, "\u00A0");
 
 export const fullAddress = `${site.address.street}, ${site.address.suite}, ${site.address.city}, ${site.address.state} ${site.address.zip}`;
-
-/** True while a config value is still an unfilled placeholder. */
-export function isPlaceholder(value: string | null | undefined): boolean {
-  if (!value) return true;
-  return /^\[.*\]$/.test(value) || /X{6,}/.test(value);
-}

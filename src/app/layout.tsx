@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { site } from "@/config/site";
 import { CookieConsent } from "@/components/CookieConsent";
-import { Footer, MobileCallButton } from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MotionProvider } from "@/components/Motion";
 import { CONSENT_STORAGE_KEY } from "@/lib/consent";
@@ -77,9 +78,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer />
-          <MobileCallButton />
           <CookieConsent />
         </MotionProvider>
+        {/* Live chat. Loaded when the browser is idle so it never delays the page itself. */}
+        {site.chatWidget.widgetId ? (
+          <Script
+            id="leadconnector-chat"
+            src={site.chatWidget.loaderUrl}
+            data-resources-url={site.chatWidget.resourcesUrl}
+            data-widget-id={site.chatWidget.widgetId}
+            strategy="lazyOnload"
+          />
+        ) : null}
       </body>
     </html>
   );

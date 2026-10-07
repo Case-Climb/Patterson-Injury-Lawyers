@@ -5,7 +5,7 @@ import { localBusinessSchema } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 import { CheckList, MapEmbed } from "@/components/blocks";
 import { HoursTable } from "@/components/blocks-office";
-import { ContactForm } from "@/components/ContactForm";
+import { FormEmbed } from "@/components/FormEmbed";
 import { PageHero } from "@/components/Hero";
 import { JsonLd } from "@/components/JsonLd";
 import { Reveal } from "@/components/Motion";
@@ -45,7 +45,7 @@ export default function ContactPage() {
               lead="Fill this in and our team will get back to you. If you would rather talk now, call us. Someone will pick up."
             />
             <div className="mt-8">
-              <ContactForm />
+              <FormEmbed />
             </div>
           </Reveal>
 
