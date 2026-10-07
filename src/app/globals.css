@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+/*
+ * BRAND TOKENS
+ * Palette is taken from the client's logo board: navy #2B2C6C and sky #3ABFEF.
+ * `accent` is the one CTA / underline / icon colour used site-wide. To switch
+ * the whole site to a different accent (for example gold #C9A84C), change the
+ * three --color-accent* values below.
+ */
+@theme {
+  --color-navy: #2b2c6c;
+  --color-navy-deep: #1e1f52;
+  --color-navy-ink: #15163b;
+
+  --color-accent: #3abfef;
+  --color-accent-bright: #7ad5f6;
+  /* Accent dark enough to pass AA as text on white and off-white. */
+  --color-accent-ink: #0b6e99;
+
+  --color-paper: #f7f5f0;
+  --color-ink: #1e1f4d;
+  --color-body: #45466a;
+  --color-line: #e2dfd7;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Headlines use the same family as body copy. Point this at another face to give headlines their own. */
+  --font-display: var(--font-sans);
+}
+
+@layer base {
+  :root {
+    --focus-ring: var(--color-navy);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: #fff;
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-navy-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Navy surfaces: light text, accent focus ring. */
+  .on-dark {
+    --focus-ring: var(--color-accent);
+    color: rgb(255 255 255 / 0.82);
+  }
+
+  .on-dark :is(h1, h2, h3, h4) {
+    color: #fff;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-navy-ink);
+    font-weight: 600;
+    padding: 0.625rem 1.25rem;
+    transition: top 0.15s;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Text links inside running copy. */
+  .prose-link {
+    color: var(--color-accent-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .prose-link:hover {
+    color: var(--color-navy);
+    text-decoration-thickness: 2px;
+  }
+
+  .on-dark .prose-link {
+    color: var(--color-accent);
+  }
+
+  .on-dark .prose-link:hover {
+    color: #fff;
+  }
+
+  /* Long-form copy: blog posts and legal pages. */
+  .prose-pil > * + * {
+    margin-top: 1.15em;
+  }
+
+  .prose-pil h2 {
+    font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.1rem);
+    margin-top: 2.2em;
+  }
+
+  .prose-pil h3 {
+    font-size: 1.35rem;
+    margin-top: 1.8em;
+  }
+
+  .prose-pil ul,
+  .prose-pil ol {
+    padding-left: 1.3em;
+  }
+
+  .prose-pil ul {
+    list-style: disc;
+  }
+
+  .prose-pil ol {
+    list-style: decimal;
+  }
+
+  .prose-pil li + li {
+    margin-top: 0.45em;
+  }
+
+  .prose-pil li::marker {
+    color: var(--color-accent-ink);
+  }
+
+  .prose-pil a {
+    color: var(--color-accent-ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .prose-pil a:hover {
+    color: var(--color-navy);
+  }
+
+  .prose-pil strong {
+    color: var(--color-ink);
+  }
+}
